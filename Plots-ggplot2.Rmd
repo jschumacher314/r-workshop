@@ -1,0 +1,6 @@
+---
+title: "Creating Graphs with ggplot2"
+author: "James"
+date: "1/27/2020"
+output: html_document
+---
