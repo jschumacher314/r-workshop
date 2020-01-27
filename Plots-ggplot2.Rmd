@@ -16,9 +16,20 @@ We will install these packages
 - readxl: to read in excel files (in many ways)
 - here: to help with filepaths
 
-```{r setup}
+```{r setup, message=FALSE, warning=FALSE}
 library(tidyverse) # install packages("tidyverse")
 library(readxl) # install packages("readxl")
 library(here) # install packages("here")
+```
+
+# California National Parks Data 
+
+```{r read-data}
+
+ca_np <- read_csv(here("data/ca_np.csv"))
+# also can be written:
+#ca_np <- read_csv("data/ca_np.csv")
+# also can be written:
+#ca_np <- read_csv("data/ca_np.csv")
 ```
 
