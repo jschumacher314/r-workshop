@@ -98,6 +98,39 @@ gg_base +
 ```
 # Add an argument to update the color based on the year value.
 
+### Use gg-themes for overall updates
+
+-theme_light()
+-theme_minimal()
+-theme_bw()
+
+```{r}
+gg_base +
+  geom_area() +
+  theme_light()
+```
+
+### Create a multiseries line plot using data for all CA National Parks (can't use ggbase since it's only for ci_np)
+
+```{r}
+ggplot(data = ca_np, aes(x = year, y = visitors, 
+                         group = park_name)) +
+  geom_line(aes(color = park_name))
+```
+
+# Try to update the line colors based on the park name variable.
+
+```{r}
+my_np_graph <- ggplot(data = ca_np, aes(x = year, y = visitors)) + 
+  geom_point(aes(color = park_name), show.legend = FALSE) +
+  facet_wrap(~park_name, scales = "free") + 
+  theme_minimal()
+```
 
 
+Export my graph as a .png, we will add to figures, because you can't push empty folders to github.
+```{r}
+ggsave(plot = my_np_graph, here("figures", "np_graph.png"
+))
+```
 
