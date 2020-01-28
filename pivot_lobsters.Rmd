@@ -93,8 +93,30 @@ siteyear_summary %>%
 There are `r nrow(lobsters)` total lobsters included in this report. # if you put the r before, it will let r studio know that you want to run when you knit. 
 
 
+## Activity 
+1. Build from our analysis and calculate the median lobster size for each site and year (hint: `size_mm` variable and a function called `median()`)
+2. build a ggplot
+3. sync to github
+
+```
+ggplot(data = siteyear_summary, aes(x = year, y = median_size_mm, color = site) +
+ geom_line()
+ ggsave(here("figures". "lobsters-plot.png"))
+```
 
 
+```{r}
+siteyear_summary <- lobsters %>%  
+  group_by(site, year) %>% 
+  summarize(count_by_site_year = n (),
+            mean_size_mm = mean(size_mm, na.rm = TRUE),
+            sd_size_mm = sd(size_mm, na.rm = TRUE),
+            median_size_mm = median(size_mm, na.rm = TRUE)
+                                              )
+ggplot(data = siteyear_summary, aes(x = year, y = median_size_mm, color = site)) +
+ geom_line() + 
+ ggsave(here("figures", "lobsters-plot.png"))
+```
 
 
 
